@@ -1,0 +1,1 @@
+# WorldSkills 2026 felkészítő
