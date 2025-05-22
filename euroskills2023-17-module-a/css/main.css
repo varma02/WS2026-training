@@ -2,8 +2,10 @@
 :root {
   --bg-1: #121212;
   --bg-2: #1c1c1c;
+  --bg-3: #2c2c2c;
   --fg-1: #e9e5e5;
-  --fg-primary: #e9e5e5;
+  --fg-2: #b0b0b0;
+  --fg-primary: #696ef9;
 }
 
 /* MARK: Global styles */
@@ -18,4 +20,15 @@ body {
   background-color: var(--bg-1);
   color: var(--fg-1);
   min-height: 100vh;
+}
+
+@keyframes float-in {
+  0% {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
