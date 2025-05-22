@@ -1,0 +1,21 @@
+/* MARK: Definitions */
+:root {
+  --bg-1: #121212;
+  --bg-2: #1c1c1c;
+  --fg-1: #e9e5e5;
+  --fg-primary: #e9e5e5;
+}
+
+/* MARK: Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: var(--bg-1);
+  color: var(--fg-1);
+  min-height: 100vh;
+}
