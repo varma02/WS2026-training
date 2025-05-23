@@ -30,12 +30,20 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  opacity: 0;
+  animation: float-in 300ms ease-in-out forwards;
 }
 #hero p {
   font-size: 2rem;
   margin-bottom: 2rem;
   max-width: 70rem;
   color: var(--fg-2);
+  opacity: 0;
+  animation: float-in 300ms 150ms ease-in-out forwards;
+}
+#hero > img {
+  opacity: 0;
+  animation: fade-in 300ms 300ms ease-in-out forwards;
 }
 
 /* MARK: SERVICES */
