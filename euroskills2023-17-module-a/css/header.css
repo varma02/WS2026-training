@@ -67,6 +67,9 @@ header > div > ul {
     transition: height 150ms ease-in-out;
     overflow: hidden;
   }
+  header > h1 {
+    width: 80%;
+  }
   header:has(input:checked) {
     height: 32rem;
   }
