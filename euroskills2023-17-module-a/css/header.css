@@ -10,24 +10,28 @@ header {
   height: 5rem;
   z-index: 50;
 }
-
 header > img {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
   margin-right: 1rem;
 }
-
-header > nav {
+header > div {
+  display: contents;
+}
+header > label {
+  display: none;
+}
+header > div > nav {
   display: flex;
   align-items: center;
   margin: 0 auto;
 }
-header ul {
+header > div ul {
   display: flex;
   list-style: none;
 }
-header a {
+header > div a {
   padding: 1rem;
   border-radius: .5rem;
   font-size: 1.2rem;
@@ -36,21 +40,72 @@ header a {
   text-decoration: none;
   color: var(--fg-1);
 }
-header a:hover {
+header > div a:hover {
   background-color: rgba(255, 255, 255, .05);
 }
-header li.signup > a {
+header > div li.signup > a {
   background-color: var(--fg-primary);
   padding: 1rem 2rem;
   opacity: 1;
   transition: opacity 100ms ease-in-out;
 }
-header li.signup:hover > a {
+header > div li.signup:hover > a {
   opacity: .8;
 }
-header li.signup a {
+header > div li.signup a {
   color: var(--fg-1);
 }
-header > ul {
+header > div > ul {
   gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    padding: 1rem;
+    height: 5rem;
+    transition: height 150ms ease-in-out;
+    overflow: hidden;
+  }
+  header:has(input:checked) {
+    height: 32rem;
+  }
+  header > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+  }
+  header > div > nav {
+    margin: 0;
+    padding: 2rem 0;
+  }
+  header > div > nav > ul {
+    flex-direction: column;
+  }
+  header > div > nav > ul > li {
+    display: flex;
+  }
+  header > div > nav > ul > li > a {
+    padding: 1rem;
+    font-size: 1.8rem;
+  }
+  header > label {
+    display: block;
+    position: absolute;
+    top: 1.8rem;
+    right: 1rem;
+    filter: grayscale(1) invert(1);
+  }
+  header > label > input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 99;
+  }
+  
 }

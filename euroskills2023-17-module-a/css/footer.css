@@ -22,3 +22,9 @@ footer a:hover {
   text-decoration: underline;
   color: var(--fg-primary);
 }
+
+@media screen and (max-width: 768px) {
+  footer > p {
+    font-size: 1.2rem;
+  }
+}

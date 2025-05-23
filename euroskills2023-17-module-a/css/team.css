@@ -53,3 +53,60 @@ main article > div > p {
 main > div > article {
   flex: 1;
 }
+main > h2:last-of-type {
+  margin-top: 5rem;
+}
+main > ol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+main > ol > li {
+  font-size: 2.5rem;
+  min-width: 35rem;
+  font-weight: bold;
+  flex: 1;
+  padding-right: 2rem;
+}
+main > ol > li > p {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 4rem 1rem;
+  }
+  main > h2 {
+    font-size: 3.5rem;
+  }
+  main article {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  main div {
+    flex-direction: column;
+  }
+  main article > img {
+    width: 100%;
+    height: 20rem;
+  }
+  main > h2:last-of-type {
+    margin-top: 3rem;
+  }
+  main > ol {
+    flex-direction: column;
+    gap: 2rem;
+    list-style-position: inside;
+  }
+  main > ol > li {
+    font-size: 2rem;
+    min-width: 0;
+  }
+  main > ol > li > p {
+    font-size: 1.5rem;
+  }
+}

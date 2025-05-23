@@ -29,6 +29,7 @@ main > article > h3 {
 }
 main > article > ul {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   list-style: none;
   margin-bottom: 2rem;
@@ -43,4 +44,23 @@ main > article > ul > li {
 main > article > p {
   font-size: 1.5rem;
   letter-spacing: .1rem;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 4rem 1rem;
+  }
+  main > article {
+    padding: 0;
+  }
+  main > article > h2 {
+    font-size: 2.5rem;
+  }
+  main > article > h3 {
+    font-size: 1.5rem;
+  }
+  main > article > p {
+    font-size: 1.5rem;
+    text-align: justify;
+  }
 }

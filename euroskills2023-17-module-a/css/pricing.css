@@ -69,3 +69,43 @@ main > ul > li > p > span {
   font-weight: bold;
   color: var(--fg-1);
 }
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 5rem 0;
+  }
+  main > h2 {
+    font-size: 2.5rem;
+  }
+  main > h3 {
+    font-size: 1.5rem;
+  }
+  main > ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  main > ul > li {
+    border-radius: 0;
+    min-height: 0;
+  }
+  main > ul > li:nth-child(2n) {
+    background-color: transparent;
+  }
+  main > ul > li > p {
+    font-size: 1.5rem;
+    text-align: justify;
+  }
+  main > ul > li > p > span {
+    font-size: 4rem;
+  }
+  main > ul > li > div > img {
+    width: 3rem;
+    height: 3rem;
+  }
+  main > ul > li > div > h3 {
+    font-size: 1.5rem;
+  }
+  main > ul > li > div > h4 {
+    font-size: 1rem;
+  }
+}
