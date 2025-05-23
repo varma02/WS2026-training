@@ -129,3 +129,118 @@
 #services > article > a:hover {
   opacity: .8;
 }
+
+/* MARK: CUSTOMERS */
+#customers {
+  margin: 0 auto;
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#customers > h3 {
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: .5rem;
+}
+#customers > h4 {
+  font-size: 2rem;
+  color: var(--fg-2);
+  margin-bottom: 2rem;
+  font-weight: normal;
+}
+#customers > ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  max-width: 80rem;
+  flex-wrap: wrap;
+}
+#customers > ul > li {
+  flex: 1;
+  background-color: var(--bg-2);
+  border-radius: 2rem;
+  padding: 2rem;
+}
+#customers > ul > li > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin-bottom: 1.5rem;
+}
+#customers > ul > li > div > img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 999rem;
+  grid-row: span 2;
+  margin-right: 1rem;
+}
+#customers > ul > li > div > h3 {
+  font-size: 2rem;
+}
+#customers > ul > li > div > h4 {
+  font-size: 1.2rem;
+  color: var(--fg-2);
+  font-weight: normal;
+}
+#customers > ul > li > p {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* MARK: START NOW */
+#start-now {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 5rem 0;
+  min-height: 60rem;
+  position: relative;
+}
+#start-now > h3 {
+  font-size: 4rem;
+  text-align: center;
+}
+#start-now > h4 {
+  font-size: 3rem;
+  color: var(--fg-2);
+  font-weight: normal;
+}
+#start-now > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+#start-now > div > a {
+  background-color: var(--bg-2);
+  padding: 1rem 2rem;
+  border-radius: .5rem;
+  text-decoration: none;
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--fg-1);
+  transition: opacity 100ms ease-in-out;
+}
+#start-now > div > a:hover {
+  opacity: .8;
+}
+#start-now > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 40rem;
+  z-index: -1;
+  opacity: .1;
+  filter: blur(.5rem) drop-shadow(0 0 10rem var(--fg-primary));
+}

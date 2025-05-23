@@ -1,6 +1,24 @@
 footer {
-  height: 10rem;
+  height: 8rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--bg-2);
+  margin-top: 2rem;
+}
+footer > p {
+  font-size: 1.5rem;
+  color: var(--fg-2);
+  text-align: center;
+  margin: 0;
+}
+footer a {
+  color: var(--fg-1);
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 150ms ease-in-out;
+}
+footer a:hover {
+  text-decoration: underline;
+  color: var(--fg-primary);
 }
