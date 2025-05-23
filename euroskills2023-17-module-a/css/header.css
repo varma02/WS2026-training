@@ -68,7 +68,7 @@ header > div > ul {
     overflow: hidden;
   }
   header > h1 {
-    width: 80%;
+    width: calc(100% - 4rem);
   }
   header:has(input:checked) {
     height: 32rem;
