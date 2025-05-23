@@ -170,7 +170,7 @@
 }
 #customers > ul > li {
   flex: 1;
-  background-color: var(--bg-2);
+  background-color: var(--bg-3);
   border-radius: 2rem;
   padding: 2rem;
 }

@@ -1,0 +1,46 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  min-height: 90vh;
+  padding: 10rem 2rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+main > hr {
+  border: none;
+  height: .1rem;
+  background-color: var(--bg-3);
+}
+main > article {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+main > article > h2 {
+  font-size: 3.5rem;
+  margin-bottom: .5rem;
+}
+main > article > h3 {
+  font-size: 2rem;
+  color: var(--fg-2);
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+main > article > ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin-bottom: 2rem;
+}
+main > article > ul > li {
+  padding: .5rem 2rem;
+  background-color: var(--bg-3);
+  border-radius: 999rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+main > article > p {
+  font-size: 1.5rem;
+  letter-spacing: .1rem;
+}
