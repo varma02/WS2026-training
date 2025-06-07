@@ -1,0 +1,11 @@
+[
+	{
+		"name": "Devcontainer MariaDB",
+		"type": "mariadb",
+		"host": "mariadb",
+		"port": 3306,
+		"username": "root",
+		"password": "",
+		"database": "laravel"
+	}
+]
