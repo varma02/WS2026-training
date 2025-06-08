@@ -3,12 +3,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import AppLayout from '@/layouts/app-layout';
-import { BreadcrumbItem, SharedData } from '@/types';
+import { BreadcrumbItem, Quota, SharedData } from '@/types';
 import { Head, useForm, usePage } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 import { FormEventHandler, useEffect } from 'react';
 
-export default function BillingQuota() {
+export default function BillingQuota({ quota }: { quota?: Quota }) {
 	const { workspace } = usePage<SharedData>().props;
 	const thisWorkspace = workspace?.all?.find((ws) => ws.id == workspace?.selected);
 
@@ -19,17 +19,13 @@ export default function BillingQuota() {
 		},
 	];
 
-	const { data, setData, post, processing, errors, reset } = useForm<
-		Required<{
-			limit: string;
-		}>
-	>({
-		limit: '',
-	});
+	const { data, setData, post, processing, errors, reset } = useForm<{
+		limit?: number;
+	}>({});
 
 	useEffect(() => {
 		setData({
-			limit: thisWorkspace?.name || '',
+			limit: quota?.limit,
 		});
 	}, []);
 
@@ -63,12 +59,11 @@ export default function BillingQuota() {
 									<Input
 										id='limit'
 										type='number'
-										required
 										autoFocus
 										tabIndex={1}
 										autoComplete='off'
 										value={data.limit}
-										onChange={(e) => setData('limit', e.target.value)}
+										onChange={(e) => setData('limit', parseInt(e.target.value))}
 										placeholder='No limit'
 										className='rounded-none border-none! ring-0! outline-none!'
 									/>

@@ -7,25 +7,17 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { twMerge } from 'tailwind-merge';
 
-export const description = 'A bar chart with a custom label';
-
-const chartData = [
-	{ month: 'January', cost: 186 },
-	{ month: 'February', cost: 305 },
-	{ month: 'March', cost: 237 },
-	{ month: 'April', cost: 10 },
-	{ month: 'May', cost: 209 },
-	{ month: 'June', cost: 214 },
-];
-
-const chartConfig = {
-	cost: {
-		label: 'Cost',
-		color: 'var(--chart-1)',
-	},
-} satisfies ChartConfig;
-
-export function HorizontalBarChart({ className }: { className?: string }) {
+export function HorizontalBarChart({
+	className,
+	redLineAt,
+	chartData,
+	chartConfig,
+}: {
+	className?: string;
+	redLineAt?: number;
+	chartData?: { [key: string]: any }[];
+	chartConfig: ChartConfig;
+}) {
 	return (
 		<Card className={twMerge('m-0 border-none p-0', className)}>
 			{/* <CardHeader>
@@ -54,7 +46,7 @@ export function HorizontalBarChart({ className }: { className?: string }) {
 						/>
 						<XAxis dataKey='cost' type='number' hide />
 						<ChartTooltip cursor={false} content={<ChartTooltipContent indicator='line' />} />
-						<ReferenceLine x={300} stroke='red' strokeWidth={2} />
+						{redLineAt && <ReferenceLine x={redLineAt} stroke='red' strokeWidth={2} />}
 						<Bar dataKey='cost' layout='vertical' fill='var(--color-cost)' radius={4}>
 							<LabelList
 								dataKey='month'

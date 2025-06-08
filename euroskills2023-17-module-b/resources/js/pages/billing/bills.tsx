@@ -1,11 +1,11 @@
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
-import { SharedData, type BreadcrumbItem } from '@/types';
+import { Bill, SharedData, type BreadcrumbItem } from '@/types';
 import { Head, router, usePage } from '@inertiajs/react';
 import { format as formatDate } from 'date-fns';
 
-export default function Bills() {
+export default function Bills({ bills }: { bills?: Bill[] }) {
 	const { workspace } = usePage<SharedData>().props;
 
 	const breadcrumbs: BreadcrumbItem[] = [
@@ -17,13 +17,13 @@ export default function Bills() {
 
 	return (
 		<AppLayout breadcrumbs={breadcrumbs}>
-			<Head title='My Workspaces' />
+			<Head title='Bills' />
 			<main className='relative flex h-full flex-1 flex-col rounded-xl p-6'>
 				<h1 className='text-2xl font-bold'>Your bills</h1>
 				<p className='text-muted-foreground mt-2 mb-4'>
 					Here you can view your recent bills. If you have any unpaid bills, they will be lifted to the top.
 				</p>
-				{true ? (
+				{bills?.length ? (
 					<Table>
 						<TableHeader>
 							<TableRow>
@@ -34,15 +34,17 @@ export default function Bills() {
 							</TableRow>
 						</TableHeader>
 						<TableBody>
-							{Array.from({ length: 5 }).map((_, i) => (
-								<TableRow key={i}>
-									<TableCell>Yes</TableCell>
-									<TableCell>{formatDate('2025-06-01T00:00:00+01:00', 'Pp')}</TableCell>
-									<TableCell>{formatDate('2025-06-15T23:59:59+01:00', 'Pp')}</TableCell>
+							{bills.map((v) => (
+								<TableRow key={v.id}>
+									<TableCell>{v.paid ? 'Yes' : 'No'}</TableCell>
+									<TableCell>{formatDate(v.created_at, 'Pp')}</TableCell>
+									<TableCell>{formatDate(v.due, 'Pp')}</TableCell>
 									<TableCell className='space-x-4'>
 										<Button
 											variant='secondary'
-											onClick={() => router.visit(route('dashboard', { ws_id: workspace?.selected }))}
+											onClick={() =>
+												router.visit(route('view-bill', { ws_id: workspace?.selected, bl_id: v.id }))
+											}
 										>
 											View
 										</Button>

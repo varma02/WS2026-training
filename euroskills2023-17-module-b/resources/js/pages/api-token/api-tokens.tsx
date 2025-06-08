@@ -35,7 +35,7 @@ export default function Dashboard({
 
 	return (
 		<AppLayout breadcrumbs={breadcrumbs}>
-			<Head title='My Workspaces' />
+			<Head title='API Tokens' />
 			<main className='relative flex h-full flex-1 flex-col rounded-xl p-6'>
 				<h1 className='text-2xl font-bold'>API Tokens</h1>
 				<p className='text-muted-foreground mt-2'>

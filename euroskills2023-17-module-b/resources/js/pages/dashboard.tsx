@@ -2,7 +2,7 @@ import { HorizontalBarChart } from '@/components/horizontal-bar-chart';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
-import { SharedData, type BreadcrumbItem } from '@/types';
+import { Bill, Quota, SharedData, type BreadcrumbItem } from '@/types';
 import { Head, router, usePage } from '@inertiajs/react';
 import { formatDate } from 'date-fns';
 import { Pencil, SquareArrowOutUpRight } from 'lucide-react';
@@ -14,7 +14,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 	},
 ];
 
-export default function Dashboard() {
+export default function Dashboard({ quota, bills }: { quota?: Quota; bills?: Bill[] }) {
 	const { workspace } = usePage<SharedData>().props;
 
 	const thisWorkspace = workspace?.all?.find((ws) => ws.id == workspace?.selected);
@@ -34,10 +34,18 @@ export default function Dashboard() {
 					Edit
 				</Button>
 				<div className='mt-4 flex flex-1 flex-wrap gap-4'>
-					<HorizontalBarChart className='h-max flex-1' />
+					<HorizontalBarChart
+						redLineAt={quota?.limit}
+						chartConfig={{ cost: { label: 'Cost', color: 'var(--chart-1)' } }}
+						chartData={bills?.map((c) => ({
+							month: formatDate(c.created_at, 'MMMM'),
+							cost: c.total,
+						}))}
+						className='h-max flex-1'
+					/>
 					<div className='h-max flex-1'>
 						<h2 className='mb-2 text-xl font-bold'>Most recent bills</h2>
-						{true ? (
+						{bills?.length ? (
 							<Table>
 								<TableHeader>
 									<TableRow>
@@ -48,15 +56,17 @@ export default function Dashboard() {
 									</TableRow>
 								</TableHeader>
 								<TableBody>
-									{Array.from({ length: 5 }).map((_, i) => (
-										<TableRow key={i}>
-											<TableCell>Yes</TableCell>
-											<TableCell>{formatDate('2025-06-01T00:00:00+01:00', 'Pp')}</TableCell>
-											<TableCell>{formatDate('2025-06-15T23:59:59+01:00', 'Pp')}</TableCell>
+									{bills.map((v) => (
+										<TableRow key={v.id}>
+											<TableCell>{v.paid ? 'Yes' : 'No'}</TableCell>
+											<TableCell>{formatDate(v.created_at, 'Pp')}</TableCell>
+											<TableCell>{formatDate(v.due, 'Pp')}</TableCell>
 											<TableCell className='space-x-4'>
 												<Button
 													variant='secondary'
-													onClick={() => router.visit(route('dashboard', { ws_id: workspace?.selected }))}
+													onClick={() =>
+														router.visit(route('view-bill', { ws_id: workspace?.selected, bl_id: v.id }))
+													}
 												>
 													<SquareArrowOutUpRight />
 													<span className='sr-only'>Open</span>

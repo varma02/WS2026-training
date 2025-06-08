@@ -17,7 +17,7 @@ class ApiTokenFactory extends Factory
 	public function definition(): array
 	{
 		return [
-			'token' => bin2hex(random_bytes(10)),
+			'token' => bin2hex(random_bytes(20)),
 		];
 	}
 }

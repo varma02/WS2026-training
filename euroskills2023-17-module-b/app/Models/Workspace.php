@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Workspace extends Model
 {
@@ -28,5 +29,21 @@ class Workspace extends Model
 	public function apiTokens(): HasMany
 	{
 		return $this->hasMany(ApiToken::class);
+	}
+
+	/**
+	 * Get the quota for the workspace.
+	 */
+	public function quota(): HasOne
+	{
+		return $this->hasOne(Quota::class);
+	}
+
+	/**
+	 * Get the bills for the workspace.
+	 */
+	public function bills(): HasMany
+	{
+		return $this->hasMany(Bill::class);
 	}
 }

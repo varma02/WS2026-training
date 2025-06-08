@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ApiTokenController;
+use App\Http\Controllers\BillController;
+use App\Http\Controllers\QuotaController;
 use App\Http\Controllers\WorkspaceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +21,10 @@ Route::prefix('/console')
 				if (!$workspace) {
 					return redirect()->route('workspace.select');
 				}
-				return Inertia::render('dashboard', []);
+				return Inertia::render('dashboard', [
+					'quota' => $workspace->quota,
+					'bills' => $workspace->bills,
+				]);
 			})->name('dashboard');
 
 			Route::get('edit', [WorkspaceController::class, 'edit'])->name('workspace.edit');
@@ -42,14 +47,12 @@ Route::prefix('/console')
 				});
 			});
 
-			Route::get('quota', function () {
-				return Inertia::render('billing/quota', []);
-			})->name('quota');
+			Route::get('quota', [QuotaController::class, 'index'])->name('quota');
+			Route::post('quota', [QuotaController::class, 'update']);
 
 			Route::prefix('bills')->group(function () {
-				Route::get('', function () {
-					return Inertia::render('billing/bills', []);
-				})->name('bills');
+				Route::get('', [BillController::class, 'index'])->name('bills');
+				Route::get('{bl_id}', [BillController::class, 'show'])->name('view-bill');
 			});
 		});
 

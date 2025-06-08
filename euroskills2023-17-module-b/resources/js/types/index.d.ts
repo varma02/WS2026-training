@@ -63,3 +63,36 @@ export interface ApiToken {
 	revoked_at?: string;
 	[key: string]: unknown;
 }
+
+export interface Quota {
+	id: number;
+	workspace_id: number;
+	limit: number;
+	created_at: string;
+	updated_at: string;
+	[key: string]: unknown;
+}
+
+export interface Bill {
+	id: number;
+	workspace_id: number;
+	total: number;
+	paid: boolean;
+	due: string;
+	created_at: string;
+	updated_at: string;
+	[key: string]: unknown;
+}
+
+export interface Usage {
+	id: number;
+	api_token_id: number;
+	bill_id?: number;
+	service: string;
+	seconds: number;
+	price_per_second: number;
+	total: number;
+	created_at: string;
+	updated_at: string;
+	[key: string]: unknown;
+}
