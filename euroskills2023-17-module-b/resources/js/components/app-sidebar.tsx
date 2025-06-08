@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader } from '@/components/ui/sidebar';
 import { SharedData, type NavItem } from '@/types';
 import { usePage } from '@inertiajs/react';
-import { Component, KeyRound, LayoutGrid, Users } from 'lucide-react';
+import { Component, KeyRound, LayoutGrid, Receipt, ShieldMinus, Users } from 'lucide-react';
 import { Workspace, WorkspaceSwitcher } from './workspace-switcher';
 
 export function AppSidebar() {
@@ -20,6 +20,16 @@ export function AppSidebar() {
 			title: 'API Tokens',
 			href: route('api-tokens', { ws_id: workspace?.selected || 0 }),
 			icon: KeyRound,
+		},
+		{
+			title: 'Bills',
+			href: route('bills', { ws_id: workspace?.selected || 0 }),
+			icon: Receipt,
+		},
+		{
+			title: 'Billing Quota',
+			href: route('quota', { ws_id: workspace?.selected || 0 }),
+			icon: ShieldMinus,
 		},
 	];
 

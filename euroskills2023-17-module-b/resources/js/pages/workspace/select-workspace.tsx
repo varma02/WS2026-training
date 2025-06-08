@@ -11,7 +11,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 	},
 ];
 
-export default function Dashboard() {
+export default function SelectWorkspace() {
 	const { workspace } = usePage<SharedData>().props;
 
 	return (

@@ -1,8 +1,11 @@
+import { HorizontalBarChart } from '@/components/horizontal-bar-chart';
 import { Button } from '@/components/ui/button';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
 import { SharedData, type BreadcrumbItem } from '@/types';
 import { Head, router, usePage } from '@inertiajs/react';
-import { Pencil } from 'lucide-react';
+import { formatDate } from 'date-fns';
+import { Pencil, SquareArrowOutUpRight } from 'lucide-react';
 
 const breadcrumbs: BreadcrumbItem[] = [
 	{
@@ -30,6 +33,44 @@ export default function Dashboard() {
 					<Pencil />
 					Edit
 				</Button>
+				<div className='mt-4 flex flex-1 flex-wrap gap-4'>
+					<HorizontalBarChart className='h-max flex-1' />
+					<div className='h-max flex-1'>
+						<h2 className='mb-2 text-xl font-bold'>Most recent bills</h2>
+						{true ? (
+							<Table>
+								<TableHeader>
+									<TableRow>
+										<TableHead>Paid</TableHead>
+										<TableHead>Created At</TableHead>
+										<TableHead>Due</TableHead>
+										<TableHead>Actions</TableHead>
+									</TableRow>
+								</TableHeader>
+								<TableBody>
+									{Array.from({ length: 5 }).map((_, i) => (
+										<TableRow key={i}>
+											<TableCell>Yes</TableCell>
+											<TableCell>{formatDate('2025-06-01T00:00:00+01:00', 'Pp')}</TableCell>
+											<TableCell>{formatDate('2025-06-15T23:59:59+01:00', 'Pp')}</TableCell>
+											<TableCell className='space-x-4'>
+												<Button
+													variant='secondary'
+													onClick={() => router.visit(route('dashboard', { ws_id: workspace?.selected }))}
+												>
+													<SquareArrowOutUpRight />
+													<span className='sr-only'>Open</span>
+												</Button>
+											</TableCell>
+										</TableRow>
+									))}
+								</TableBody>
+							</Table>
+						) : (
+							<p>You don't have any recent bills.</p>
+						)}
+					</div>
+				</div>
 			</main>
 		</AppLayout>
 	);

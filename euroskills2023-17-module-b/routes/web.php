@@ -41,6 +41,16 @@ Route::prefix('/console')
 					Route::post('revoke', [ApiTokenController::class, 'destroy']);
 				});
 			});
+
+			Route::get('quota', function () {
+				return Inertia::render('billing/quota', []);
+			})->name('quota');
+
+			Route::prefix('bills')->group(function () {
+				Route::get('', function () {
+					return Inertia::render('billing/bills', []);
+				})->name('bills');
+			});
 		});
 
 		Route::get('create-workspace', [WorkspaceController::class, 'create'])->name('workspace.create');
